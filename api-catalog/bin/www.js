@@ -5,6 +5,9 @@ const bodyParser = require('body-parser')
 const jwt = require('helpers/jwt/jwt')
 const errorHandler = require('helpers/error/error-handler')
 const cors = require('cors')
+const dotenv = require('dotenv')
+
+dotenv.config()
 
 // cors
 app.use(function(req, res, next) {
@@ -28,7 +31,7 @@ app.use('/catalog', require('./../controllers/catalog'))
 app.use(errorHandler)
 
 // start server
-const port = process.env.PORT || 80
+const port = process.env.PORT || 5200
 const www = app.listen(port, function () {
-    console.log('api-started-on-port[::: ' + port + ' :::]')
+    console.log(`api-started-on-port[::: ${port} :::]`)
 })

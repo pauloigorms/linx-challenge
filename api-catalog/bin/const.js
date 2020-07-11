@@ -1,14 +1,11 @@
 const MONGODB_USER = {
-    "authSource": "atlasAdmin@admin",
-    "user": "us-linx", 
-    "pass":"#L1nx@2020",
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true
 }
 
 const MONGODB_CONNECT = {
-    "URL": "mongodb+srv://us-linx:#L1nX2020@catalog.j1eua.mongodb.net/mdb?retryWrites=true&w=majority",
+    "URL": `mongodb+srv://us-linx:L1nx2020@catalog.j1eua.mongodb.net/mdb?retryWrites=true`,
     "SECRET": "linx-challenge"
 }
 
