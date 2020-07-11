@@ -4,6 +4,8 @@ const fs = require('fs')
 const private__key = fs.readFileSync('private.key')
 const Catalog = c__sh.Catalog
 
+const catalog = (fs.readFileSync('craw_data/catalog.json', 'utf-8')).split('\n')
+
 async function __build__token() {
   try {
     const token = jwt.sign({ private__key }, process.env.SECRET, { expiresIn: '1h' })
@@ -15,25 +17,18 @@ async function __build__token() {
   }
 }
 
-async function __create__item(__item) {
+async function __create__catalog() {
   try {
-    console.log(__item)
-    // const item = new Catalog(__item)
-    // await item.save()
+    return catalog.forEach(element => {
+      const item = new Catalog(JSON.parse(element))
+      item.save()
+    })
   } catch (e) {
     throw e.message
   }
 }
 
-async function __get__item(__item_id) {
-  try {
-    return await Catalog.findById(__item_id)
-  } catch (e) {
-    throw e.message
-  }  
-}
-
-async function __get__catalog() {
+async function __get__full() {
   try {
     return await Catalog.find()
   } catch (e) {
@@ -41,9 +36,19 @@ async function __get__catalog() {
   }  
 }
 
+async function __get__infos__item(environ, __item_id) {
+  try {
+    let query = { }
+    if(environ === "compact") query = { name: 1, price: 1, status: 1, categories: 1 }
+    return await Catalog.find({id: __item_id}, query)
+  } catch (e) {
+    throw e.message
+  }  
+}
+
 module.exports = {
   __build__token,
-  __create__item,
-  __get__item,
-  __get__catalog
+  __create__catalog,
+  __get__full,
+  __get__infos__item
 }
