@@ -1,0 +1,103 @@
+@font-face {
+    font-family: ubuntu-medium;
+    src: url(font/ubuntu/Ubuntu-Medium.ttf);
+}
+
+@font-face {
+    font-family: ubuntu-regular;
+    src: url(font/ubuntu/Ubuntu-Regular.ttf);
+}
+
+body {
+    max-width: 100rem;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: ubuntu-medium;
+}
+
+.grid {
+    display: grid;
+}
+
+.grid-template-columns-1 {
+	grid-template-columns: 20rem 20rem 20rem 20rem;
+}
+
+.content {
+    position: relative;
+}
+
+.content-align {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.text-center {
+    font-family: ubuntu-regular;
+    text-align: center;
+}
+
+.text-size-14 {
+    font-size: 1.2rem;
+}
+
+.text-color-purple {
+    color: #6a1b9a;
+}
+
+.text-margin {
+    padding: 1rem 1rem;
+}
+
+.text-old-price {
+    text-decoration: line-through;
+    font-size: .7rem;
+    color: #bdbdbd
+}
+
+.text-actual-price {
+    font-size: 1.4rem;
+}
+
+.img-product {
+    height: 15rem;
+}
+
+.badge-win {
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: .25rem;
+}
+
+.badge-win-gray {
+    color: #6a1b9a;
+    background-color: #eceff1;
+}
+
+.badge {
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: .25rem;
+}
+
+.badge-purple {
+    color: #fff;
+    background-color: #6a1b9a;
+}
+
+.mt-10 {
+    top: 120%
+}
+
+.mb-2 {
+    padding-bottom: 5%
+}
