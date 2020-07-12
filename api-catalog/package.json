@@ -1,7 +1,7 @@
 {
     "name": "linx-challenge",
     "version": "0.0.1",
-    "description": "API-CATALOG",
+    "description": "API-CATALOG | | Desafio proposto pela Linx Digital para concorrer a vaga de Desenvolver Fullstack",
     "scripts": {
         "start": "nodemon bin/www",
         "start-dev": "nodemon bin/www"

@@ -6,7 +6,6 @@ const jwt = require('helpers/jwt/jwt')
 const errorHandler = require('helpers/error/error-handler')
 const cors = require('cors')
 const dotenv = require('dotenv')
-
 dotenv.config()
 
 // cors
