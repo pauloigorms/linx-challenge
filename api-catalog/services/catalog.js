@@ -1,4 +1,5 @@
 const c__sh = require('helpers/connect/catalog')
+const CONSTS = require('bin/consts')
 const jwt = require('jsonwebtoken')
 const fs = require('fs')
 const private__key = fs.readFileSync('private.key')
@@ -36,11 +37,9 @@ async function __get__full() {
   }  
 }
 
-async function __get__infos__item(environ, __item_id) {
+async function __get__infos__item(size, __ids) {
   try {
-    let query = { }
-    if(environ === "compact") query = { name: 1, price: 1, status: 1, categories: 1 }
-    return await Catalog.find({id: __item_id}, query)
+    return await Catalog.find({ id: { $in: __ids.split(',') } }, CONSTS.set__size(size))
   } catch (e) {
     throw e.message
   }  

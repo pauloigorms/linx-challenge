@@ -27,7 +27,7 @@ app.use('/recommender', require('../controllers/recommender'))
 app.use(errorHandler)
 
 // start server
-const port = process.env.PORT || 6002
+const port = process.env.PORT || 6001
 const www = app.listen(port, function () {
     console.log(`api-recommender-started-on-port[::: ${port} :::]`)
 })

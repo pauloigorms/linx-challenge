@@ -24,13 +24,13 @@ app.use(bodyParser.json())
 app.use(jwt())
 
 // api routes
-app.use('/catalog', require('./../controllers/catalog'))
+app.use('/catalog', require('../controllers/catalog'))
 
 // global error handler
 app.use(errorHandler)
 
 // start server
-const port = process.env.PORT || 5200
+const port = process.env.PORT || 5001
 const www = app.listen(port, function () {
     console.log(`api-started-on-port[::: ${port} :::]`)
 })

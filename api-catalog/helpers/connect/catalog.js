@@ -1,4 +1,4 @@
-const CONST = require('bin/const')
+const CONST = require('bin/consts')
 const mongoose = require('mongoose')
 
 mongoose.connect(CONST.MONGODB_CONNECT.URL,  CONST.MONGODB_USER)

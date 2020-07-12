@@ -3,8 +3,8 @@
     "version": "0.0.1",
     "description": "API-CATALOG | | Desafio proposto pela Linx Digital para concorrer a vaga de Desenvolver Fullstack",
     "scripts": {
-        "start": "nodemon bin/www",
-        "start-dev": "nodemon bin/www"
+        "start": "nodemon bin/server",
+        "start-dev": "nodemon bin/server"
     },
     "dependencies": {
         "bcryptjs": "^2.4.3",

@@ -1,5 +1,5 @@
 const expressJwt = require('express-jwt')
-const CONST = require('bin/const')
+const CONST = require('bin/consts')
 
 module.exports = jwt
 

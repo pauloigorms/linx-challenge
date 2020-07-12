@@ -27,7 +27,7 @@ function __get__full(req, res, next) {
 }
 
 function __get__infos__item(req, res, next) {
-    services.__get__infos__item(req.query.environ, req.query.id)
+    services.__get__infos__item(req.query.size, req.query.ids)
         .then(catalog => res.json(catalog))
         .catch(err => next(err))
 }

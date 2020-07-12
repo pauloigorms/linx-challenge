@@ -6,7 +6,7 @@ const services = require('services/recommender')
 router.get('/showcase', __get__data)
 
 function __get__data(req, res, next) {
-    services.__get__data()
+    services.__get__data(req.query.maxProducts, req.query.sizeReturn, req.query.listRecom)
         .then(data => res.json(data))
         .catch(err => next(err))
 }
