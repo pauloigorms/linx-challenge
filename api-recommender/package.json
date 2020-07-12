@@ -1,0 +1,25 @@
+{
+    "name": "linx-challenge",
+    "version": "0.0.1",
+    "description": "API-RECOMMENDER | | Desafio proposto pela Linx Digital para concorrer a vaga de Desenvolver Fullstack",
+    "scripts": {
+        "start": "nodemon bin/server",
+        "start-dev": "nodemon bin/server"
+    },
+    "dependencies": {
+        "axios": "^0.19.2",
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.18.3",
+        "cors": "^2.8.4",
+        "dotenv": "^8.2.0",
+        "express": "^4.16.3",
+        "node-pre-gyp": "^0.13.0",
+        "nodemon": "^2.0.4",
+        "request": "^2.88.0",
+        "rootpath": "^0.1.2"
+    },
+    "engines": {
+        "node": "^10.16.x",
+        "npm": "^6.9.x"
+    }
+}
