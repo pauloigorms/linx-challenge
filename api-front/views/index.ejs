@@ -15,7 +15,7 @@
         <br />
 
         <section class="content content-align">
-            <p class="text-center text-size-14 text-color-purple text-margin"><b>Mais vendidos</b></p>
+            <p class="text-center text-size-14 text-color-purple text-margin"><b><%= title %></b></p>
             <div class="grid grid-template-columns-1">
                 <div>
                     <p class="badge-win badge-win-gray">1º</p>
@@ -58,52 +58,31 @@
                     </p>
                 </div>
             </div>
+        </section>        
+
+        <section class="content mt-10">
+            <form action="/" method="GET">
+
+                <label for="max_products">Max Products:</label><br>
+                <input type="number" id="max_products" name="max_products" value="16"><br><br>
+
+                <label for="algorithm">Algorithm:</label> <br />
+                <select name="algorithm" id="algorithm">
+                    <option value="mostpopular">Most Popular</option>
+                    <option value="pricereduction">Price Reduction</option>
+                </select><br><br>
+
+                <label for="size_result">Size Result JSON:</label> <br />
+                <select name="size_result" id="size_result">
+                    <option value="compact">Compact</option>
+                    <option value="complete">Complete</option>
+                </select> <br><br>
+
+                <button type="submit">FILTER</button>
+
+              </form>
         </section>
 
-        <section class="content content-align mt-10 mb-2">
-            <p class="text-center text-size-14 text-color-purple text-margin"><b>Produtos que baixaram de preço</b></p>
-            <div class="grid grid-template-columns-1">
-                <div>
-                    <p class="badge badge-purple">-31%</p>
-                    <img src="https://www.lazershop.com.br/img/products/infantil-aco-4-posicoes-mor_1_1000.jpg" class="img-product" alt="produto em baixa de preço" /> <br />
-                    <p>Cadeira de Praia 4 Posições 002004 Mor</p>                    
-                    <p class="">
-                        <span class="text-old-price">R% 799,90</span> <br />
-                        Por <b class="text-actual-price text-color-purple">R$ 549,90</b> <br />
-                        10xR$54,99
-                    </p>
-                </div>
-                <div>
-                    <p class="badge badge-purple">-31%</p>
-                    <img src="https://www.lazershop.com.br/img/products/infantil-aco-4-posicoes-mor_1_1000.jpg" class="img-product" alt="produto em baixa de preço" /> <br />
-                    <p>Cadeira de Praia 4 Posições 002004 Mor</p>                    
-                    <p class="">
-                        <span class="text-old-price">R% 799,90</span> <br />
-                        Por <b class="text-actual-price text-color-purple">R$ 549,90</b> <br />
-                        10xR$54,99
-                    </p>
-                </div>  
-                <div>
-                    <p class="badge badge-purple">-31%</p>
-                    <img src="https://www.lazershop.com.br/img/products/infantil-aco-4-posicoes-mor_1_1000.jpg" class="img-product" alt="produto em baixa de preço" /> <br />
-                    <p>Cadeira de Praia 4 Posições 002004 Mor</p>                    
-                    <p class="">
-                        <span class="text-old-price">R% 799,90</span> <br />
-                        Por <b class="text-actual-price text-color-purple">R$ 549,90</b> <br />
-                        10xR$54,99
-                    </p>
-                </div>
-                <div>
-                    <p class="badge badge-purple">-31%</p>
-                    <img src="https://www.lazershop.com.br/img/products/infantil-aco-4-posicoes-mor_1_1000.jpg" class="img-product" alt="produto em baixa de preço" /> <br />
-                    <p>Cadeira de Praia 4 Posições 002004 Mor</p>                    
-                    <p class="">
-                        <span class="text-old-price">R% 799,90</span> <br />
-                        Por <b class="text-actual-price text-color-purple">R$ 549,90</b> <br />
-                        10xR$54,99
-                    </p>
-                </div>
-            </div>
-        </section>
     </body>
+
 </html>
