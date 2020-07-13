@@ -4,7 +4,7 @@ const CONST = require('bin/consts')
 module.exports = jwt
 
 function jwt() {
-    const secret = CONST.MONGODB_CONNECT.SECRET
+    const secret = process.env.SECRET
     return expressJwt({ secret, isRevoked }).unless({
         path: [
             { url: '/catalog/get-token', methods: ['GET'] }

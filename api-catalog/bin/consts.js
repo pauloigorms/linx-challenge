@@ -5,9 +5,7 @@ const MONGODB_USER = {
 }
 
 const MONGODB_CONNECT = {
-    "URL": "mongodb://localhost:27017/mdb",
-    // "URL": `mongodb+srv://us-linx:L1nx2020@catalog.j1eua.mongodb.net/mdb?retryWrites=true`,
-    "SECRET": "linx-challenge"
+    "URL": "mongodb://localhost:27017/mdb"
 }
 
 function set__size(type) {

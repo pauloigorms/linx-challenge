@@ -5,15 +5,17 @@ async function __get__data(p_value, p_size_catalog, p_environ, environ = CONSTS.
   try {
     var data = [],
         result_linx = [],
+        result = [],
         token = (await axios.get(CONSTS.API_CATALOG + CONSTS.ROUTER_CATALOG.get__token)).data
     if(environ) result_linx = (await axios.get(CONSTS.API_LINX + environ.algorithm)).data
     if(result_linx.length > 0 && result_linx !== null) {
-        data.push( (await axios.get(`${CONSTS.API_CATALOG}${CONSTS.ROUTER_CATALOG.get__infos__item}size=${p_size_catalog}&ids=${getIds(result_linx).slice(0, max__products++)}`, { headers: { 'Authorization': 'Bearer ' + token.token } })).data )
-        data.filter(element => { return element.status !== CONSTS.STATUS_AVAILABLE})
+        data.push( (await axios.get(`${CONSTS.API_CATALOG}${CONSTS.ROUTER_CATALOG.get__infos__item}size=${p_size_catalog}&ids=${getIds(result_linx)}`, 
+                    { headers: { 'Authorization': 'Bearer ' + token.token } })).data )
+        result = data[0].filter(function(element) { return element.status === CONSTS.STATUS_AVAILABLE })
     }
     return {
       title: environ.title,
-      data: data
+      result: result.slice(0, max__products++)
     }
   } catch (e) {
     throw e.message

@@ -9,30 +9,13 @@
 }
 
 body {
-    max-width: 100rem;
-    margin: 0 auto;
-    padding: 2rem;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
     font-family: ubuntu-medium;
-}
-
-.grid {
-    display: grid;
-}
-
-.grid-template-columns-1 {
-	grid-template-columns: 20rem 20rem 20rem 20rem;
-}
-
-.content {
-    position: relative;
-}
-
-.content-align {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
 }
 
 .text-center {
@@ -66,27 +49,18 @@ body {
     height: 15rem;
 }
 
-.badge-win {
+.badge {
     display: inline-block;
-    padding: .25em .4em;
+    padding: .5em .7em;
     font-size: 75%;
     text-align: center;
     white-space: nowrap;
-    border-radius: .25rem;
+    border-radius: .15rem;
 }
 
 .badge-win-gray {
     color: #6a1b9a;
     background-color: #eceff1;
-}
-
-.badge {
-    display: inline-block;
-    padding: .25em .4em;
-    font-size: 75%;
-    text-align: center;
-    white-space: nowrap;
-    border-radius: .25rem;
 }
 
 .badge-purple {
@@ -101,3 +75,78 @@ body {
 .mb-2 {
     padding-bottom: 5%
 }
+
+.force-left-align {
+    float: left;
+    position: relative;
+}
+
+.form-inline {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.form-inline label {
+    margin: 5px 10px 5px 0;
+}
+
+/* CAROUSEL */
+
+#container {
+    width: 100%;
+    max-width: 1005px;
+    position: relative;
+}
+
+#carousel {
+    overflow: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+#carousel::-webkit-scrollbar {
+    height: 0;
+}
+
+#previous,
+#next {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background: #fafafa;
+    border: none;
+    padding: 8px;
+    border-radius: 50%;
+    outline: 0;
+    cursor: pointer;
+    position: absolute;
+}
+
+#previous {
+    top: 50%;
+    left: -5%;
+    transform: translate(50%, -50%);
+    display: none;
+}
+
+#next {
+    top: 50%;
+    right: -5%;
+    transform: translate(-50%, -50%);
+}
+
+#content {
+    display: grid;
+    grid-gap: 16px;
+    grid-auto-flow: column;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.item {
+    width: 180px;
+    height: 180px;
+    background: green;
+}
+  

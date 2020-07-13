@@ -5,8 +5,6 @@ const fs = require('fs')
 const private__key = fs.readFileSync('private.key')
 const Catalog = c__sh.Catalog
 
-const catalog = (fs.readFileSync('craw_data/catalog.json', 'utf-8')).split('\n')
-
 async function __build__token() {
   try {
     const token = jwt.sign({ private__key }, process.env.SECRET, { expiresIn: '1h' })
@@ -20,6 +18,7 @@ async function __build__token() {
 
 async function __create__catalog() {
   try {
+    const catalog = (fs.readFileSync('craw_data/catalog.json', 'utf-8').trim()).split('\n')
     return catalog.forEach(element => {
       const item = new Catalog(JSON.parse(element))
       item.save()
