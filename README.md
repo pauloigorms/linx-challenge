@@ -22,8 +22,11 @@ As tecnologias aplicadas para o desenvolvimento desde desafio, são:
 
 | Descrição | Versão |          |
 |-----------|--------|----------|
-| Node JS   |12^.0.0 | [Leia +](https://nodejs.org/en/)    |
-| Mongo DB  |12^.0.0 | [Leia +](https://www.mongodb.com/)  |
+| Node JS   |v12.16.1 | [Leia +](https://nodejs.org/en/)    |
+| Mongo DB  |v4.2 | [Leia +](https://www.mongodb.com/)  |
+| Postman  |v7.28.0 | [Leia +](https://www.postman.com/)  |
+
+Tenha todas essas ferramentas instaladas em seu computador para os teste.
 
 ## **RESOLUÇÃO**
 
@@ -57,12 +60,12 @@ A imagem seguinte apresenta, de forma simples, o padrão de comunicação entre 
 
     Aqui, ao iniciar o servidor, teremos uma primeira tela conforme, imagem.
 
-    <img src="front_1.png">
+    <img src="front_1.PNG">
 
     Os *inputs* são para facilitar o teste. O primeiro item do formulário trata-se da quantidade de resultados carregados em tela. O próximo é direcionado ao escopo do algoritmo. Por fim, indicamos o tamanho das instâncias. Uma vez feito isso, ao clicar em LOADING, os dados são trazidos. Conforme imagens.
 
-    <img src="front_2.png">
-    <img src="front_3.png">
+    <img src="front_2.PNG">
+    <img src="front_3.PNG">
 
 #### **EXECUTANDO O PROJETO**
 
