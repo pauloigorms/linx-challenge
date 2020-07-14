@@ -46,8 +46,8 @@
                     <div>
                         <% if(algorithm && algorithm === "mostpopular") { %>
                             <p class="badge badge-win-gray"><%= index+1 %>º</p>
-                        <% } else { %>
-                            <p class="badge badge-purple"><%= index+1 %>%</p>
+                        <% } else if(item.oldPrice) { %>
+                            <p class="badge badge-purple"><%= (100-((item.price/item.oldPrice)*100)).toFixed(2) %>%</p>
                         <% } %>
                         
                         <% if(item.images) { %>
