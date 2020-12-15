@@ -1,19 +1,18 @@
 const API_CATALOG = "http://localhost:5001/catalog/"
-const ROUTER_CATALOG = {
-    get__token: "get-token",
-    get__infos__item: "get-infos-item/?",
-    import__data: "import-data"
+const ROUTES = {
+    IMPORTA_DATA: "import-data",
+    GET_INFO: "get-by-id/?"
 }
 const API_LINX = "https://wishlist.neemu.com/onsite/impulse-core/ranking/"
 
 function set__environment(type) {
     const Environment = {
-        mostpopular: {
+        1: {
             title: 'Mais vendidos',
             algorithm: 'mostpopular.json'
         },
-        pricereduction: {
-            title: 'Produtos que baixaram os preços',
+        2: {
+            title: 'Produtos em oferta',
             algorithm: 'pricereduction.json'
         }
     }
@@ -24,7 +23,7 @@ const STATUS_AVAILABLE = "AVAILABLE"
 
 module.exports = {
     API_CATALOG,
-    ROUTER_CATALOG,
+    ROUTES,
     API_LINX,
     set__environment,
     STATUS_AVAILABLE

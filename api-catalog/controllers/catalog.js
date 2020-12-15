@@ -14,7 +14,7 @@ function __import__data(req, res, next) {
 }
 
 function __get__byId(req, res, next) {
-    services.__get__byId(req.query.id, req.query.format)
+    services.__get__byId(req.query.id, req.query.status, req.query.format)
         .then(catalog => res.json(catalog))
         .catch(err => next(err))
 }

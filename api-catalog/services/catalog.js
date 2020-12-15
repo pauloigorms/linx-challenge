@@ -15,11 +15,11 @@ async function __import__data() {
   }
 }
 
-async function __get__byId(id, format) {
+async function __get__byId(ids, status, format) {
   try {
-    if(!id)
+    if(!ids)
       return {}
-    return await Catalog.find({ id }, CONSTS.scope(format))
+    return await Catalog.find({ id: { $in: ids.split(',') }, status: status }, CONSTS.scope(format))
   } catch (e) {
     throw e.message
   }  
