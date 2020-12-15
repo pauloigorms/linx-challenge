@@ -2,7 +2,6 @@ require('rootpath')()
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const jwt = require('helpers/jwt/jwt')
 const errorHandler = require('helpers/error/error-handler')
 const cors = require('cors')
 const dotenv = require('dotenv')
@@ -20,9 +19,6 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-// use JWT auth to secure the api
-app.use(jwt())
-
 // api routes
 app.use('/catalog', require('../controllers/catalog'))
 
@@ -31,6 +27,7 @@ app.use(errorHandler)
 
 // start server
 const port = process.env.PORT || 5001
-const www = app.listen(port, function () {
-    console.log(`api-started-on-port[::: ${port} :::]`)
+
+app.listen(port, function () {
+    console.log(`api-catalog-on-port[::: ${port} :::]`)
 })

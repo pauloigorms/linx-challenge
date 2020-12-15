@@ -5,7 +5,7 @@ const MONGODB_USER = {
 }
 
 const MONGODB_CONNECT = {
-    "URL": "mongodb://localhost:27017/mdb"
+    "URL": "mongodb+srv://usrlinx:bjnO873JNMrzRihm@catalog.j1eua.mongodb.net/mdb?retryWrites=true&w=majority"
 }
 
 function set__size(type) {

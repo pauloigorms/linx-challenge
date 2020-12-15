@@ -1,22 +1,9 @@
 const c__sh = require('helpers/connect/catalog')
 const CONSTS = require('bin/consts')
-const jwt = require('jsonwebtoken')
 const fs = require('fs')
-const private__key = fs.readFileSync('private.key')
 const Catalog = c__sh.Catalog
 
-async function __build__token() {
-  try {
-    const token = jwt.sign({ private__key }, process.env.SECRET, { expiresIn: '1h' })
-    return {
-      token
-    }
-  } catch (e) {
-    throw e.message
-  }
-}
-
-async function __create__catalog() {
+async function __import__data() {
   try {
     const catalog = (fs.readFileSync('craw_data/catalog.json', 'utf-8').trim()).split('\n')
     return catalog.forEach(element => {
@@ -36,7 +23,7 @@ async function __get__full() {
   }  
 }
 
-async function __get__infos__item(size, __ids) {
+async function __get__infos__byId(size, __ids) {
   try {
     return await Catalog.find({ id: { $in: __ids.split(',') } }, CONSTS.set__size(size))
   } catch (e) {
@@ -45,8 +32,7 @@ async function __get__infos__item(size, __ids) {
 }
 
 module.exports = {
-  __build__token,
-  __create__catalog,
+  __import__data,
   __get__full,
-  __get__infos__item
+  __get__infos__byId
 }

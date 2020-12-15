@@ -11,11 +11,6 @@ function errorHandler(err, req, res, next) {
         return res.status(400).json({ message: err.message + ' erro 400' });
     }
 
-    if (err.name === 'UnauthorizedError') {
-        // jwt authentication error
-        return res.status(401).json({ message: 'Token inválido erro 401' });
-    }
-
     // default to 500 server error
     return res.status(500).json({ message: err.message + ' :: erro 500' });
 }
