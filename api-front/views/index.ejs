@@ -16,66 +16,67 @@
         <div class="force-left-align">
             <form class="form-inline" action="/" method="get">
 
-                <label for="max_products">Max Products:</label>
+                <label for="max_products">Qtde itens:</label>
                 <input type="number" id="max_products" name="max_products" value="<%= max_products %>"> &emsp;
 
-                <label for="algorithm">Algorithm:</label>
-                <select name="algorithm" id="algorithm">
-                    <option value="mostpopular">Most Popular</option>
-                    <option value="pricereduction">Price Reduction</option>
+                <label for="algorithm">Algoritmo:</label>
+                <select name="algorithm" id="algorithm" >
+                    <option value="1">Mais populares</option>
+                    <option value="2">Produtos em oferta</option>
                 </select>
                 
                 &emsp;
 
-                <label for="size_result">Size Result JSON:</label>
-                <select name="size_result" id="size_result">                    
-                    <option value="complete">Complete</option>
-                    <option value="compact">Compact</option>
+                <label for="scope">Resultado JSON:</label>
+                <select name="scope" id="scope">                    
+                    <option value="complete">Completo</option>
+                    <option value="compact">Compactado</option>
                 </select> &emsp; &emsp;
 
-                <button type="submit" autofocus>LOADING</button>
+                <button type="submit" autofocus>CARREGAR</button>
 
               </form>
         </div>
 
         <div id="container">
-            <p class="text-center text-size-14 text-color-purple text-margin"><b><%= title %></b></p>
-            <div id="carousel">
-              <div id="content">
-                <% data.forEach((item, index) => { %>
-                    <div>
-                        <% if(algorithm && algorithm === "mostpopular") { %>
-                            <p class="badge badge-win-gray"><%= index+1 %>º</p>
-                        <% } else if(item.oldPrice) { %>
-                            <p class="badge badge-purple"><%= (100-((item.price/item.oldPrice)*100)).toFixed(2) %>%</p>
-                        <% } %>
-                        
-                        <% if(item.images) { %>
-                          <img src="<%= item.images.default %>" class="img-product" alt="<%= title %>" /> <br />
-                        <% } else { %>
-                          <img src="https://image.flaticon.com/icons/svg/565/565312.svg" class="img-product" alt="no load image" /> <br />
-                        <% } %>
-                        
-                        <% if(item.name) { %>
-                          <p> <%= (item.name).substring(0, 50) + '...' %> </p>  
-                        <% } else { %>
-                          <p> No description </p>  
-                        <% } %>
+          <p class="text-center text-size-14 text-color-purple text-margin"><b><%= title %></b></p>
+          <div id="carousel">
+            <div id="content">
+              <% data.forEach((item, index) => { %>
+                  <div>
 
-                        <% if(item.oldPrice) { %>
-                          <p>
-                            <span class="text-old-price">R$ <%= item.oldPrice %></span> <br />
-                            Por <b class="text-actual-price text-color-purple">R$ <%= item.price %></b> <br />
-                            <%= item.installment.count %>xR$<%= item.installment.price %>
-                          </p> 
-                        <% } else { %>
-                          <p> No description </p>  
-                        <% } %>  
-                        
-                    </div>
-                <% }) %>
-              </div>
+                      <% if(algorithm === 1) { %>
+                          <p class="badge badge-win-gray"><%= index+1 %>º</p>
+                      <% } else if(item.oldPrice) { %>
+                          <p class="badge badge-purple"><%= (((item.price/item.oldPrice)*100)-100).toFixed(2) %>%</p>
+                      <% } %>
+                      
+                      <% if(item.images) { %>
+                        <img src="<%= item.images.default %>" class="img-product" alt="<%= title %>" /> <br />
+                      <% } else { %>
+                        <img src="https://image.flaticon.com/icons/svg/565/565312.svg" class="img-product" alt="no load image" /> <br />
+                      <% } %>
+                      
+                      <% if(item.name) { %>
+                        <p> <%= (item.name).substring(0, 50) + '...' %> </p>  
+                      <% } else { %>
+                        <p> Sem descrição </p>  
+                      <% } %>
+
+                      <% if(item.oldPrice) { %>
+                        <p>
+                          <span class="text-old-price">R$ <%= item.oldPrice %></span> <br />
+                          Por <b class="text-actual-price text-color-purple">R$ <%= item.price %></b> <br />
+                          <%= item.installment.count %>xR$<%= item.installment.price %>
+                        </p> 
+                      <% } else { %>
+                        <p> Sem descrição </p>  
+                      <% } %>  
+                      
+                  </div>
+              <% }) %>
             </div>
+          </div>
 
             <button id="previous">
               <svg
@@ -99,10 +100,8 @@
                 <path d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z" />
               </svg>
             </button>
-          </div>
-
-        
+        </div>
 
     </body>
-    <script src="/js/carousel.js"></script>
+    <script src="/js/carousel.js"> </script>
 </html>

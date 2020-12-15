@@ -12,7 +12,7 @@ function set__environment(type) {
             algorithm: 'mostpopular.json'
         },
         2: {
-            title: 'Produtos em oferta',
+            title: 'Produtos que baixaram de preço',
             algorithm: 'pricereduction.json'
         }
     }

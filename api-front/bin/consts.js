@@ -1,6 +1,6 @@
 const API_CATALOG = "http://localhost:6001/recommender/"
 const ROUTER_CATALOG = {
-    showcase: "showcase/?"
+    showcase: "items/?"
 }
 
 module.exports = {
