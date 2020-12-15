@@ -15,6 +15,16 @@ async function __import__data() {
   }
 }
 
+async function __get__byId(id, format) {
+  try {
+    if(!id)
+      return {}
+    return await Catalog.find({ id }, CONSTS.scope(format))
+  } catch (e) {
+    throw e.message
+  }  
+}
+
 async function __get__full() {
   try {
     return await Catalog.find()
@@ -23,16 +33,8 @@ async function __get__full() {
   }  
 }
 
-async function __get__infos__byId(size, __ids) {
-  try {
-    return await Catalog.find({ id: { $in: __ids.split(',') } }, CONSTS.set__size(size))
-  } catch (e) {
-    throw e.message
-  }  
-}
-
 module.exports = {
   __import__data,
   __get__full,
-  __get__infos__byId
+  __get__byId
 }

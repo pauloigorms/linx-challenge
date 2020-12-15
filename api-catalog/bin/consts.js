@@ -8,12 +8,12 @@ const MONGODB_CONNECT = {
     "URL": "mongodb+srv://usrlinx:bjnO873JNMrzRihm@catalog.j1eua.mongodb.net/mdb?retryWrites=true&w=majority"
 }
 
-function set__size(type) {
-    const size = {
-        compact:  { name: 1, price: 1, status: 1, categories: 1 },
-        complete:  { }
+function scope(type) {
+    const scope = {
+        complete:  { },
+        compact:  { name: 1, price: 1, status: 1, categories: 1 }
     }
-    return size[type]
+    return scope[type]
 }
 
 const HTTP_STATUS_NOTFOUND = 404
@@ -26,5 +26,5 @@ module.exports = {
     HTTP_STATUS_NOTMATCH,
     HTTP_STATUS_NOTFOUND,
     HTTP_STATUS_SUCCESS,
-    set__size
+    scope
 }
