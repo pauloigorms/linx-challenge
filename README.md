@@ -80,5 +80,17 @@ A imagem seguinte apresenta, de forma simples, o padrão de comunicação entre 
   ````
   Faça isso para todas as APIs e o projeto funcionará perfeitamente...
 
+
+## **TESTANDO O PROJETO - ONLINE**
+
+  Caso queira apenas testar e validar as funcionalidades, acesso os links seguintes parar ter acesso a aplicação frontend e as respectivas api's.
+
+  - [Click aqui para iniciar a API-CATALOG](https://catalog-linx.herokuapp.com/)
+  - [Click aqui para iniciar a API-RECOMMENDER](https://recommender-linx.herokuapp.com/)
+  - [Click aqui para testar a aplicação](https://front-linx.herokuapp.com/)
+
+
+###### Caso não retorne nenhum dado, experimente clicar [nest link](https://catalog-linx.herokuapp.com/catalog/import-data) para fazer o import dos dados ou pressione o link "Importar Dados" na tela inicial da api frontend, conforme figura 1.
+
 ---
 Desenvolvidor por [Paulo Moraes](http://pauloigorms.github.io/) com ❤️
