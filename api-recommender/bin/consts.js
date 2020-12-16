@@ -1,4 +1,4 @@
-const API_CATALOG = "https://catalog-linx.herokuapp.com/"
+const API_CATALOG = "https://catalog-linx.herokuapp.com/catalog/"
 const ROUTES = {
     IMPORTA_DATA: "import-data",
     GET_INFO: "get-by-id/?"

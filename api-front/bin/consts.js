@@ -1,9 +1,9 @@
-const API_CATALOG = "http://localhost:6001/recommender/"
-const ROUTER_CATALOG = {
+const API_RECOMMENDER = "https://recommender-linx.herokuapp.com/recommender/"
+const ROUTER = {
     showcase: "items/?"
 }
 
 module.exports = {
-    API_CATALOG,
-    ROUTER_CATALOG
+    API_RECOMMENDER,
+    ROUTER
 }

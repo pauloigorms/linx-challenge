@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>API FRONT</title>
-        <link rel="icon" href="./../img/favicon.ico" >
+        <link rel="icon" href="./../img/favicon.png" >
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="API-FrontEnd | Desafio para vaga de Desenvolvedor Full Stack - Linx Digital">
         <meta name="author" content="Candidato | Paulo Moraes">        
@@ -12,37 +12,32 @@
         <link rel="stylesheet" type="text/css" href="/css/costum.css" />        
     </head>
 
-    <script>
-      console.log()
-      console.log('<%- algorithm %>')
-    </script>
-
     <body>
 
-        <div class="force-left-align">
-            <form class="form-inline" action="/" method="get">
+      <div class="force-left-align">
+          <form class="form-inline" action="/" method="get">
 
-                <label for="max_products">Qtde itens:</label>
-                <input type="number" id="max_products" name="max_products" value="<%= max_products %>"> &emsp;
+              <label for="max_products">Qtde itens:</label>
+              <input type="number" id="max_products" name="max_products" value="<%= max_products %>"> &emsp;
 
-                <label for="algorithm">Algoritmo:</label>
-                <select name="algorithm" id="algorithm">
-                    <option value="1" <%= parseInt(algorithm) == 1 ? 'selected' : '' %>>Mais populares</option>
-                    <option value="2" <%= parseInt(algorithm) == 2 ? 'selected' : '' %>>Produtos em oferta</option>
-                </select>
-                
-                &emsp;
+              <label for="algorithm">Algoritmo:</label>
+              <select name="algorithm" id="algorithm">
+                  <option value="1" <%= parseInt(algorithm) == 1 ? 'selected' : '' %>>Mais populares</option>
+                  <option value="2" <%= parseInt(algorithm) == 2 ? 'selected' : '' %>>Produtos em oferta</option>
+              </select>
+              
+              &emsp;
 
-                <label for="scopee">Resultado JSON:</label>
-                <select name="scopee" id="scopee">                    
-                    <option value="complete" <%= scopee == 'complete' ? 'selected' : '' %>>Completo</option>
-                    <option value="compact" <%= scopee == 'compact' ? 'selected' : '' %>Compactado</option>
-                </select> &emsp; &emsp;
+              <label for="scopee">Resultado JSON:</label>
+              <select name="scopee" id="scopee">                    
+                  <option value="complete" <%= scopee == 'complete' ? 'selected' : '' %>>Completo</option>
+                  <option value="compact" <%= scopee == 'compact' ? 'selected' : '' %>Compactado</option>
+              </select> &emsp; &emsp;
 
-                <button type="submit" autofocus>CARREGAR</button>
+              <button type="submit" autofocus>CARREGAR</button>
 
-              </form>
-        </div>
+            </form>
+      </div>
 
         <div id="container">
           <p class="text-center text-size-14 text-color-purple text-margin"><b><%= title %></b></p>
@@ -106,6 +101,10 @@
                 <path d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z" />
               </svg>
             </button>
+        </div>
+
+        <div >
+          <a type="button" href="https://catalog-linx.herokuapp.com/catalog/import-data" target="_blank">IMPORTAR DADOS</a>
         </div>
 
     </body>

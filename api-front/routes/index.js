@@ -4,7 +4,7 @@ var router = express.Router()
 const CONSTS = require('./../bin/consts')
 
 router.get("/", function(req, res) {
-    axios.get(`${CONSTS.API_CATALOG}${CONSTS.ROUTER_CATALOG.showcase}max=${req.query.max_products}&alg=${req.query.algorithm}&scope=${req.query.scopee}`)
+    axios.get(`${CONSTS.API_RECOMMENDER}${CONSTS.ROUTER.showcase}max=${req.query.max_products}&alg=${req.query.algorithm}&scope=${req.query.scopee}`)
         .then(function (response) {
             res.render('index', 
                 { 
