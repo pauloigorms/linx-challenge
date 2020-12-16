@@ -1,4 +1,4 @@
-const API_CATALOG = "http://localhost:6001/recommender/"
+const API_CATALOG = "https://recommender-linx.herokuapp.com/"
 const ROUTER_CATALOG = {
     showcase: "items/?"
 }
