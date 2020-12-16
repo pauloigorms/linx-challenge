@@ -11,6 +11,12 @@
         <!-- core CSS -->
         <link rel="stylesheet" type="text/css" href="/css/costum.css" />        
     </head>
+
+    <script>
+      console.log()
+      console.log('<%- algorithm %>')
+    </script>
+
     <body>
 
         <div class="force-left-align">
@@ -20,17 +26,17 @@
                 <input type="number" id="max_products" name="max_products" value="<%= max_products %>"> &emsp;
 
                 <label for="algorithm">Algoritmo:</label>
-                <select name="algorithm" id="algorithm" >
-                    <option value="1">Mais populares</option>
-                    <option value="2">Produtos em oferta</option>
+                <select name="algorithm" id="algorithm">
+                    <option value="1" <%= parseInt(algorithm) == 1 ? 'selected' : '' %>>Mais populares</option>
+                    <option value="2" <%= parseInt(algorithm) == 2 ? 'selected' : '' %>>Produtos em oferta</option>
                 </select>
                 
                 &emsp;
 
-                <label for="scope">Resultado JSON:</label>
-                <select name="scope" id="scope">                    
-                    <option value="complete">Completo</option>
-                    <option value="compact">Compactado</option>
+                <label for="scopee">Resultado JSON:</label>
+                <select name="scopee" id="scopee">                    
+                    <option value="complete" <%= scopee == 'complete' ? 'selected' : '' %>>Completo</option>
+                    <option value="compact" <%= scopee == 'compact' ? 'selected' : '' %>Compactado</option>
                 </select> &emsp; &emsp;
 
                 <button type="submit" autofocus>CARREGAR</button>
@@ -45,10 +51,10 @@
               <% data.forEach((item, index) => { %>
                   <div>
 
-                      <% if(algorithm === 1) { %>
-                          <p class="badge badge-win-gray"><%= index+1 %>º</p>
+                      <% if(parseInt(algorithm) === 1) { %>
+                        <p class="badge badge-win-gray"> <b><%= index+1 %>º</b> </p>                                                
                       <% } else if(item.oldPrice) { %>
-                          <p class="badge badge-purple"><%= (((item.price/item.oldPrice)*100)-100).toFixed(2) %>%</p>
+                          <p class="badge badge-purple"> <b><%= (((item.price/item.oldPrice)*100)-100).toFixed(0) %>%</b> </p>
                       <% } %>
                       
                       <% if(item.images) { %>

@@ -61,6 +61,7 @@ body {
 .badge-win-gray {
     color: #6a1b9a;
     background-color: #eceff1;
+    border-radius: .15rem .15rem 50rem 50rem !important;
 }
 
 .badge-purple {

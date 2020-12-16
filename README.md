@@ -1,6 +1,6 @@
 # **DESAFIO LINX Digital | Desenvolvedor FullStack**
 
-O desafio visa avaliar a capacidade para implementação de um sistema contendo mais de uma camada, duas de backend e uma de frontend. A aplicação a ser desenvolvida, é um sistema para exibir as vitrines de recomendação em um site, o sistema deverá conter 3 camadas: 1. **API Catálogo**; 2. **API Recomendação**; e **3. API FrontEnd**. O Projeto deve seguir as seguintes diretrizes.
+O desafio visa avaliar a capacidade de implementação de um sistema contendo mais de uma camada, duas em backend e uma frontend. A aplicação a ser desenvolvida, é um sistema para exibir vitrines de recomendação em um site, essas camadas são: 1. **API Catálogo**; 2. **API Recomendação**; e **3. API FrontEnd**. O Projeto deve seguir as seguintes diretrizes.
 
 ### **ESPECIFICAÇÕES GERAIS**
 - *Queremos avaliar aquilo que você conseguir produzir do desafio, então mesmo que você não consiga desenvolver tudo, envie o resultado para que possamos analisar;* e
@@ -18,7 +18,7 @@ O desafio visa avaliar a capacidade para implementação de um sistema contendo 
 
 ## **TECNOLOGIAS**
 
-As tecnologias aplicadas para o desenvolvimento desde desafio, são:
+As tecnologias aplicadas para o desenvolvimento deste desafio, foram:
 
 | Descrição | Versão |          |
 |-----------|--------|----------|
@@ -32,29 +32,24 @@ Tenha todas essas ferramentas instaladas em seu computador para os teste.
 
 #### **MICROARQUITETURA DE COMUNICAÇÃO**
 
-A imagem seguinte apresenta, de forma simples, o padrão de comunicação entre as APIs propostas no desafio. Primeiro recebemos uma entrada do usuário, essa requisição é feita no *clientserver*, neste caso API-FrontEnd, em seguinda esse serviço dispara uma chamada a segunda camada, a API-Recommender que por sua vez abre uma conexão com uma API externa disponibilizada pela Linx. O retorno disso resulta em uma lista de ID, essa lista é encaminhada para a camada 3 ou API-Catalog. Quando essa recebe a lista com os IDs abre o processo de importação dos dados, chamando da base de dados MongoDB, feito isso, o retorno é imediato e entregue camada-a-camada até que chegue para o usuário em forma de carousel. Segue imagem.
+A imagem seguinte apresenta, de forma simples, o padrão de comunicação entre as APIs propostas no desafio. Primeiro recebe-se uma entrada do usuário, essa requisição é feita no *clientserver*, neste caso API-FrontEnd, em seguinda esse serviço dispara uma chamada a segunda camada, a API-Recommender que por sua vez abre uma conexão com uma API externa disponibilizada pela Linx. O retorno desta comunicação resulta em uma lista de ID, esses dados são encaminhados para a camada 3, a API-Catalog. Quando essa é requisitada abre-se o processo de importação dos dados, conectando à base de dados MongoDB, feito isso, o retorno é imediato e entregue camada-a-camada até que chegue ao usuário em forma de carousel. Segue imagem.
 
 <img src="design.png">
 
 #### **SERVIÇOS POR API**
 
-- **API -CATALOG**
+- **API-CATALOG**
 
-    Está API é responsável por importar dos dados do catalog.JSON e devolver os dados de acordo com a chamada da camada posterior. Tomei a liberdade de criar uma camada de segurança de acesso aos dados, para isso, criei um método para construir *tokens* de acesso que possuem uma hora de ciclo de vida. Os EndPoints são:
+    Está API é responsável por importar dos dados do catalog.JSON e devolver os dados de acordo com a chamada da camada posterior. Os EndPoints são:
 
-  - **/catalog/get-token** -> recebe um JSON de retorno contendo o toke gerado;
-  - **/catalog/import-data** -> executa o método de importação dos dados e envia para o banco de dados - para essa tarefa ser concluída com êxido, o arquivo 'catalog.json' precisa estar alocado no diretório denominado *craw_data* interno à *API-Catalog*;
-  - **/catalog/get-infos-item/?size=<tam_retorno>&ids=[]** -> neste, temos o endpoint que consulta à base dados, nele são passados dois parâmetros via query. O primeiro, chamado *size*, é referente ao escopo dos dados de retorno: completo, com o JSON integral; filtrado - apenas com: a) name; b) price; c) status; e d) categories. O segundo, *ids*, é restrito à lista contendo os identificadores dos produtos.
-  
-  ##### Para os dois últimos EndPoints o TOKEN deve ser passado via header do tipo: Bearer Token.
+  - **/catalog/import-data** -> ao executa o método de importação dos dados, a API interpreta o arquivo 'catalog.json', salvo no diretório *craw_data* na raíz da API, e envia os dados para o MongoDB Cloud;
+  - **/catalog/get-by-id?id=X,Y,Z&status=<AVAILABLE>&format=<complete|compact>** -> neste, temos o endpoint que consulta à base dados e retorna todas as informações solicitadas, para isso, estes parâmetros são necessários: a) *id*, com todos os valores de identificação dos itens requisitados separados por vírgula; b) o status do objeto; e c) formato do resultado, podendo ser completo ou compactado.
 
 - **API -RECOMMENDER**
 
-    Essa API é responsável pelo middleware de dados requeridos do *client*. É nela que definimos o tipo de dados que iremos retornar, se serão dados com os produtos mais vendidos ou com produtos em oferta. Há apenas um endpoint com três parâmeteos distintos. Veja.
+    Essa API é responsável pelo middleware de dados requeridos do *client*. É nela que definimos o tipo de dados que iremos retornar, se serão dados com os produtos mais vendidos ou com produtos em oferta. Há apenas um endpoint com três parâmetros distintos. Veja.
 
-    - **/recommender/showcase/?maxProducts=X&sizeReturn=<tam_retorno>&listRecom=<algorit_coleta>** -> o primeiro parâmetro é para indicar a quantidade de itens que serão apresentados na interface; o segundo, é para indicar o filtro de campos internos aos JSON de retorno, este equivale ao parâmetro *size* descrito na API anterior; e, por último, temos o *listRecom* que define qual algoritmo será encaminhado à API-Linx, este por sua vez retorna a lista de IDs contendo os produtos mais vendidos ou em promoção.
-
-  ##### Para este EndPoints o TOKEN deve ser passado via header do tipo: Bearer Token.
+    - **/recommender/items/?max=x&alg=<1|2>&scope=<complete|compact>** -> o primeiro parâmetro é para indicar a quantidade de itens que serão retornados para interface; o segundo, é para indicar qual dos algoritmos de recomendação será usado: a) com produtos mais populares; e b) com produtos com redução de preço.
 
 - **API -FRONTEND**
 
@@ -62,16 +57,16 @@ A imagem seguinte apresenta, de forma simples, o padrão de comunicação entre 
 
     <img src="front_1.PNG">
 
-    Os *inputs* são para facilitar o teste. O primeiro item do formulário trata-se da quantidade de resultados carregados em tela. O próximo é direcionado ao escopo do algoritmo. Por fim, indicamos o tamanho das instâncias. Uma vez feito isso, ao clicar em LOADING, os dados são trazidos. Conforme imagens.
+    Os *inputs* são para facilitar o teste. O primeiro item do formulário trata-se da quantidade de resultados carregados em tela. O próximo é direcionado ao algoritmo de recomendação. Por fim, indicamos o formato das instâncias. Uma vez feito isso, ao clicar em CARREGAR, os dados são apresentados. Conforme imagens.
 
-    <img src="front_2.PNG">
-    <img src="front_3.PNG">
+    <img src="front_2.PNG" height="250">
+    <img src="front_3.PNG" height="250">
 
-#### **EXECUTANDO O PROJETO**
+## **COMPILANDO O PROJETO**
 
-  O projeto foi desenvolvido completamente em **NodeJS**, isso facilita sua execução. Entretanto, antes de tudo precisamos instalar todas as dependências por API, isso pode ser feito usando o seguinte comando:
+  O projeto foi desenvolvido completamente em **NodeJS**, isso facilita sua execução. Entretanto, antes de tudo precisamos instalar todas as dependências API-a-API, isso pode ser feito usando o seguinte comando:
 
-  - Calma, não esqueça de acessar o diretório de cada API via terminal/cmd.
+  - Calma, não esqueça de acessar o diretório de cada projeto via terminal/cmd.
   ````
   cd /caminho/para/diretorio
   ````
@@ -83,20 +78,7 @@ A imagem seguinte apresenta, de forma simples, o padrão de comunicação entre 
    ````
   npm start
   ````
-  Faça isso para todas as APIs e o projeto funcionará perfeitamente... Ops, ia esquecendo. Favor, gere o arquivo **.env** na raíz de todos os diretórios. Para ajudar, segue as informações que precisa conter em cada uma:
-  - API-CATALOG:
-    ````
-    PORT=5001
-    SECRET=#L1nX@2020
-    ````
-  - API-RECOMMENDER:
-    ````
-    PORT=6001
-    ````
-  - API-FRONT:
-    ````
-    PORT=80
-    ````
+  Faça isso para todas as APIs e o projeto funcionará perfeitamente...
 
 ---
-Desenvolvidor por [Paulo Moraes](http://www.paulomoraes.me/) com ❤️
+Desenvolvidor por [Paulo Moraes](http://pauloigorms.github.io/) com ❤️
