@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <title>API FRONT</title>
+        <link rel="icon" href="./../img/favicon.ico" >
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="API-FrontEnd | Desafio para vaga de Desenvolvedor Full Stack - Linx Digital">
+        <meta name="author" content="Candidato | Paulo Moraes">        
+        <meta name="theme-color" content="#6a1b9a">
+        <!-- core CSS -->
+        <link rel="stylesheet" type="text/css" href="/css/costum.css" />        
+    </head>
+
+    <script>
+      console.log()
+      console.log('<%- algorithm %>')
+    </script>
+
+    <body>
+
+        <div class="force-left-align">
+            <form class="form-inline" action="/" method="get">
+
+                <label for="max_products">Qtde itens:</label>
+                <input type="number" id="max_products" name="max_products" value="<%= max_products %>"> &emsp;
+
+                <label for="algorithm">Algoritmo:</label>
+                <select name="algorithm" id="algorithm">
+                    <option value="1" <%= parseInt(algorithm) == 1 ? 'selected' : '' %>>Mais populares</option>
+                    <option value="2" <%= parseInt(algorithm) == 2 ? 'selected' : '' %>>Produtos em oferta</option>
+                </select>
+                
+                &emsp;
+
+                <label for="scopee">Resultado JSON:</label>
+                <select name="scopee" id="scopee">                    
+                    <option value="complete" <%= scopee == 'complete' ? 'selected' : '' %>>Completo</option>
+                    <option value="compact" <%= scopee == 'compact' ? 'selected' : '' %>Compactado</option>
+                </select> &emsp; &emsp;
+
+                <button type="submit" autofocus>CARREGAR</button>
+
+              </form>
+        </div>
+
+        <div id="container">
+          <p class="text-center text-size-14 text-color-purple text-margin"><b><%= title %></b></p>
+          <div id="carousel">
+            <div id="content">
+              <% data.forEach((item, index) => { %>
+                  <div>
+
+                      <% if(parseInt(algorithm) === 1) { %>
+                        <p class="badge badge-win-gray"> <b><%= index+1 %>º</b> </p>                                                
+                      <% } else if(item.oldPrice) { %>
+                          <p class="badge badge-purple"> <b><%= (((item.price/item.oldPrice)*100)-100).toFixed(0) %>%</b> </p>
+                      <% } %>
+                      
+                      <% if(item.images) { %>
+                        <img src="<%= item.images.default %>" class="img-product" alt="<%= title %>" /> <br />
+                      <% } else { %>
+                        <img src="https://image.flaticon.com/icons/svg/565/565312.svg" class="img-product" alt="no load image" /> <br />
+                      <% } %>
+                      
+                      <% if(item.name) { %>
+                        <p> <%= (item.name).substring(0, 50) + '...' %> </p>  
+                      <% } else { %>
+                        <p> Sem descrição </p>  
+                      <% } %>
+
+                      <% if(item.oldPrice) { %>
+                        <p>
+                          <span class="text-old-price">R$ <%= item.oldPrice %></span> <br />
+                          Por <b class="text-actual-price text-color-purple">R$ <%= item.price %></b> <br />
+                          <%= item.installment.count %>xR$<%= item.installment.price %>
+                        </p> 
+                      <% } else { %>
+                        <p> Sem descrição </p>  
+                      <% } %>  
+                      
+                  </div>
+              <% }) %>
+            </div>
+          </div>
+
+            <button id="previous">
+              <svg
+                xmlns="https://image.flaticon.com/icons/svg/860/860828.svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path fill="none" d="M0 0h24v24H0V0z" />
+                <path d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z" />
+              </svg>
+            </button>
+            <button id="next">
+              <svg
+                xmlns="https://image.flaticon.com/icons/svg/860/860790.svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path fill="none" d="M0 0h24v24H0V0z" />
+                <path d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z" />
+              </svg>
+            </button>
+        </div>
+
+    </body>
+    <script src="/js/carousel.js"> </script>
+</html>
